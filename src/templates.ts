@@ -18,6 +18,7 @@ const OUTPUT_PATH = process.env.OUTPUT_LOCATION || "output";
 const OUTPUT_NAME = process.env.OUTPUT_NAME || "output";
 
 // TODO: Set source directory from environment variable and/or docker volume
+// TODO: Consider downloading templates from github when starting the server (check if they exist first)
 
 export default async function count() {
   console.log("Listing .gitignore files in folder");
