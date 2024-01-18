@@ -16,6 +16,7 @@ const ENDPOINT = process.env.ENDPOINT || "api/templates";
 const OUTPUT_TO_FILE = process.env.OUTPUT_TO_FILE || "false";
 const OUTPUT_PATH = process.env.OUTPUT_LOCATION || "output";
 const OUTPUT_NAME = process.env.OUTPUT_NAME || "output";
+const PATH_TYPE = process.env.OS == "Windows" ? "\\" : "/";
 
 // TODO: Set source directory from environment variable and/or docker volume
 // TODO: Consider downloading templates from github when starting the server (check if they exist first)
@@ -42,7 +43,7 @@ export default async function count() {
       // element.path = path.relative(directoryPath, element.path);
       response.push({
         name: element.name,
-        path: `${element.path}\\${element.name}`,
+        path: `${element.path}${PATH_TYPE}${element.name}`,
         // sha: "",
         // size: "elementSize",
         download_url: `http://${HOSTNAME}:${PORT}${URL}${ENDPOINT}${element.name}`,
@@ -65,10 +66,13 @@ export default async function count() {
       `${OUTPUT_PATH}\\${OUTPUT_NAME}.json`
     );
     if (outputExists)
-      await fs.promises.unlink(`${OUTPUT_PATH}\\${OUTPUT_NAME}.json`);
-    await fs.promises.appendFile(`${OUTPUT_PATH}\\${OUTPUT_NAME}.json`, output);
+      await fs.promises.unlink(`${OUTPUT_PATH}${PATH_TYPE}${OUTPUT_NAME}.json`);
+    await fs.promises.appendFile(
+      `${OUTPUT_PATH}${PATH_TYPE}${OUTPUT_NAME}.json`,
+      output
+    );
     console.log(
-      `Output appended to file ${directoryPath}\\${OUTPUT_PATH}\\${OUTPUT_NAME}.json`
+      `Output appended to file ${directoryPath}${PATH_TYPE}${OUTPUT_PATH}${PATH_TYPE}${OUTPUT_NAME}.json`
     );
   }
 
