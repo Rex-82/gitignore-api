@@ -1,12 +1,18 @@
-import express, { type Application } from "express"
-import { routes } from "./routes"
-import count from "./templates"
+import express, { type Application } from "express";
+import { routes } from "./routes";
+import dotenv from "dotenv";
 
-const app: Application = express()
-const port: number = 4000
+// Load environment variables from .env file
+dotenv.config();
 
-routes(app)
-count()
+// Access environment variables
+const PORT = process.env.PORT || "3000";
+const HOSTNAME = process.env.HOSTNAME || "localhost";
 
+const app: Application = express();
 
-app.listen(port, () => console.log(`Server is listening on http://localhost:${port}`))
+routes(app);
+
+app.listen(PORT, () =>
+  console.log(`Server is listening on http://${HOSTNAME}:${PORT}`)
+);

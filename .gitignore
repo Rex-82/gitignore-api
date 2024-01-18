@@ -131,3 +131,6 @@ dist
 
 # templates folder
 templates/
+templates_old/
+templates_bak/
+output/
