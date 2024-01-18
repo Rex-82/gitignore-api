@@ -17,6 +17,8 @@ const OUTPUT_TO_FILE = process.env.OUTPUT_TO_FILE || "false";
 const OUTPUT_PATH = process.env.OUTPUT_LOCATION || "output";
 const OUTPUT_NAME = process.env.OUTPUT_NAME || "output";
 
+// TODO: Set source directory from environment variable and/or docker volume
+
 export default async function count() {
   console.log("Listing .gitignore files in folder");
 

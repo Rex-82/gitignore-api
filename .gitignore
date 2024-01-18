@@ -133,4 +133,9 @@ dist
 templates/
 templates_old/
 templates_bak/
+
+# output folder
 output/
+
+# build folder
+build/
