@@ -16,7 +16,7 @@ const ENDPOINT = process.env.ENDPOINT || "api/templates";
 const OUTPUT_TO_FILE = process.env.OUTPUT_TO_FILE || "false";
 const OUTPUT_PATH = process.env.OUTPUT_LOCATION || "output";
 const OUTPUT_NAME = process.env.OUTPUT_NAME || "output";
-const PATH_TYPE = process.env.OS == "Windows" ? "\\" : "/";
+const PATH_TYPE = process.env.PATH_TYPE == "windows" ? "\\" : "/";
 
 // TODO: Set source directory from environment variable and/or docker volume
 // TODO: Consider downloading templates from github when starting the server (check if they exist first)
