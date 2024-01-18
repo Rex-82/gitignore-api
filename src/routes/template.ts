@@ -13,7 +13,7 @@ dotenv.config();
 const HOSTNAME = process.env.HOSTNAME || "localhost";
 const PORT = process.env.PORT || "3000";
 const URL = process.env.URL || "/api/templates";
-const ENDPOINT = process.env.ENDPOINT || "api/templates";
+const ENDPOINT = process.env.ENDPOINT || "/Globals/";
 
 export const TemplateRouter: Router = Router();
 
