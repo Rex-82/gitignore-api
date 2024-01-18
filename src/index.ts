@@ -6,8 +6,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Access environment variables
-const PORT = process.env.PORT || "3000";
 const HOSTNAME = process.env.HOSTNAME || "localhost";
+const PORT = process.env.PORT || "3000";
 
 const app: Application = express();
 

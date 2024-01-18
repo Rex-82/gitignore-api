@@ -6,6 +6,14 @@ import {
 } from "express";
 import fs from "fs";
 import count from "../templates";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const HOSTNAME = process.env.HOSTNAME || "localhost";
+const PORT = process.env.PORT || "3000";
+const URL = process.env.URL || "/api/templates";
+const ENDPOINT = process.env.ENDPOINT || "api/templates";
 
 export const TemplateRouter: Router = Router();
 
@@ -19,6 +27,8 @@ async function serve() {
       res.status(200).send(output);
     }
   );
+  
+  console.log(`Templates will be available at http://${HOSTNAME}:${PORT}${URL}${ENDPOINT}file_name.gitignore`)
 
   output.forEach(async (element) => {
     const encodedElementName = encodeURIComponent(element.name);
@@ -33,6 +43,7 @@ async function serve() {
       }
     );
   });
+
 }
 
 serve();

@@ -8,14 +8,14 @@ const outputPath = path.join(__dirname, "../output/output.json");
 dotenv.config();
 
 // Access environment variables
-const URL = process.env.URL || "/api/templates";
-const ENDPOINT = process.env.ENDPOINT || "api/templates";
 const HOSTNAME = process.env.HOSTNAME || "localhost";
 const PORT = process.env.PORT || "3000";
+const URL = process.env.URL || "/api/templates";
+const ENDPOINT = process.env.ENDPOINT || "api/templates";
 
 const OUTPUT_TO_FILE = process.env.OUTPUT_TO_FILE || "false";
-const OUTPUT_NAME = process.env.OUTPUT_NAME || "output";
 const OUTPUT_PATH = process.env.OUTPUT_LOCATION || "output";
+const OUTPUT_NAME = process.env.OUTPUT_NAME || "output";
 
 export default async function count() {
   console.log("Listing .gitignore files in folder");
