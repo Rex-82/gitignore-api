@@ -22,11 +22,15 @@ async function serve() {
   
   // Serve the list of templates
   TemplateRouter.get(
-    "/",
+    ENDPOINT,
     (req: Request, res: Response, next: NextFunction) => {
       res.status(200).send(output);
     }
   );
+
+  TemplateRouter.get("/", (req: Request, res: Response, next: NextFunction) => {
+    res.status(200).send(output);
+  });
   
   console.log(`Templates will be available at http://${HOSTNAME}:${PORT}${URL}${ENDPOINT}file_name.gitignore`)
 
