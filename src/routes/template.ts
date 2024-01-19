@@ -12,20 +12,15 @@ export const TemplateRouter: Router = Router();
 
 async function serve() {
   const output = await count();
-  
-  // Serve the list of templates
-  TemplateRouter.get(
-    env.ENDPOINT,
-    (req: Request, res: Response, next: NextFunction) => {
-      res.status(200).send(output);
-    }
-  );
 
   TemplateRouter.get("/", (req: Request, res: Response, next: NextFunction) => {
-    res.status(200).send(output);
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(JSON.stringify(output, null, 2));
   });
-  
-  console.log(`Templates will be available at http://${env.HOSTNAME}:${env.PORT}${env.URL}/file_name.gitignore`)
+
+  console.log(
+    `Templates will be available at http://${env.HOSTNAME}:${env.PORT}${env.URL}`
+  );
 
   output.forEach(async (element) => {
     const encodedElementName = encodeURIComponent(element.name);
@@ -40,7 +35,6 @@ async function serve() {
       }
     );
   });
-
 }
 
 serve();
