@@ -25,7 +25,7 @@ async function serve() {
     res.status(200).send(output);
   });
   
-  console.log(`Templates will be available at http://${env.HOSTNAME}:${env.PORT}${env.URL}${env.ENDPOINT}file_name.gitignore`)
+  console.log(`Templates will be available at http://${env.HOSTNAME}:${env.PORT}${env.URL}/file_name.gitignore`)
 
   output.forEach(async (element) => {
     const encodedElementName = encodeURIComponent(element.name);
@@ -33,7 +33,7 @@ async function serve() {
 
     // Serve the single template
     TemplateRouter.get(
-      `${env.ENDPOINT}${encodedElementName}`,
+      `/${encodedElementName}`,
       (req: Request, res: Response, next: NextFunction) => {
         res.contentType("text/plain");
         res.status(200).send(fileContents);

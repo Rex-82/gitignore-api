@@ -29,7 +29,7 @@ export default async function count() {
         path: `${element.path}${env.PATH_TYPE}${element.name}`,
         // sha: "",
         // size: "",
-        download_url: `http://${env.HOSTNAME}:${env.PORT}${env.URL}${env.ENDPOINT}${element.name}`,
+        download_url: `http://${env.HOSTNAME}:${env.PORT}${env.URL}/${element.name}`,
       });
     } else if (element.isDirectory()) {
       dirCount++;
