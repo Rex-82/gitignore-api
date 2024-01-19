@@ -1,12 +1,8 @@
 import { type Application, type Router } from "express";
 import { TemplateRouter } from "./template";
-import dotenv from "dotenv";
+import env from "../utils/env";
 
-dotenv.config();
-
-const URL = process.env.URL || "/api/templates";
-
-const _routes: Array<[string, Router]> = [[URL, TemplateRouter]];
+const _routes: Array<[string, Router]> = [[env.URL, TemplateRouter]];
 
 export const routes = (app: Application) => {
   _routes.forEach((route) => {

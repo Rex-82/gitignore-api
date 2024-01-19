@@ -6,14 +6,7 @@ import {
 } from "express";
 import fs from "fs";
 import count from "../templates";
-import dotenv from "dotenv";
-
-dotenv.config();
-
-const HOSTNAME = process.env.HOSTNAME || "localhost";
-const PORT = process.env.PORT || "3000";
-const URL = process.env.URL || "/api/templates";
-const ENDPOINT = process.env.ENDPOINT || "/Globals/";
+import env from "../utils/env";
 
 export const TemplateRouter: Router = Router();
 
@@ -22,7 +15,7 @@ async function serve() {
   
   // Serve the list of templates
   TemplateRouter.get(
-    ENDPOINT,
+    env.ENDPOINT,
     (req: Request, res: Response, next: NextFunction) => {
       res.status(200).send(output);
     }
@@ -32,7 +25,7 @@ async function serve() {
     res.status(200).send(output);
   });
   
-  console.log(`Templates will be available at http://${HOSTNAME}:${PORT}${URL}${ENDPOINT}file_name.gitignore`)
+  console.log(`Templates will be available at http://${env.HOSTNAME}:${env.PORT}${env.URL}${env.ENDPOINT}file_name.gitignore`)
 
   output.forEach(async (element) => {
     const encodedElementName = encodeURIComponent(element.name);
@@ -40,7 +33,7 @@ async function serve() {
 
     // Serve the single template
     TemplateRouter.get(
-      `/${encodedElementName}`,
+      `${env.ENDPOINT}${encodedElementName}`,
       (req: Request, res: Response, next: NextFunction) => {
         res.contentType("text/plain");
         res.status(200).send(fileContents);
