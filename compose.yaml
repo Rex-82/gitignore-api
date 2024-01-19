@@ -13,8 +13,19 @@ services:
       context: .
     environment:
       NODE_ENV: production
-    ports:
-      - 3000:3000
+      PATH_TYPE: 'linux'                
+      HOSTNAME: 'localhost'               
+      PORT: '443'                         
+      URL: '/api/templates'                
+      ENDPOINT: '/Global/'
+    volumes:
+      - gitignore-data:/usr/src/app/templates
+    container_name: gitignore-api
+volumes:
+  gitignore-data:
+    external:
+      name: gitignore_data
+
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
