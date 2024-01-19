@@ -27,11 +27,12 @@ export default async function count() {
       response.push({
         name: element.name,
         path: `${element.path}${env.PATH_TYPE}${element.name}`,
+        type: "file",
         // sha: "",
         // size: "",
         download_url: `http://${env.HOSTNAME}:${env.PORT}${env.URL}/${element.name}`,
       });
-    } else if (element.isDirectory()) {
+    } if (element.isDirectory()) {
       dirCount++;
     } else {
       othersCount++;
